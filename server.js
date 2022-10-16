@@ -14,13 +14,13 @@ app.use(cors(corsOptions))
 
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
-app.use(
-    cookieSession({
-        name:'askar-session',
-        secret:'COOKIE_SECRET',
-        httpOnly:true
-    })
-);
+// app.use(
+//     cookieSession({
+//         name:'askar-session',
+//         secret:'COOKIE_SECRET',
+//         httpOnly:true
+//     })
+// );
 
 DB.mongoose
     .connect(`mongodb://${dbConfig.HOST}:${dbConfig.PORT}/${dbConfig.DB}`,{

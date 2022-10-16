@@ -24,16 +24,13 @@ exports.signup = (req,res)=>{
 ///log in 
 exports.login = (req,res)=> {
     User.findOne({
-        username:req.body.username,
+        username:req.body.username
     })
-    .exec((err,user)=> {
-        if (err) {
-            return res.status(404).send({message:'user not found'})
-        }
-        let passwordIsValid = bcrypt.compareSync(
-            req.body.password,
-            user.password
-        );
+    .then( user => {
+            let passwordIsValid = bcrypt.compareSync(
+                req.body.password,
+                user.password
+                );
         if (!passwordIsValid){
             return res.status(410).send({message:"invalid password!"});
         }
@@ -41,13 +38,14 @@ exports.login = (req,res)=> {
             expiresIn:86400, //24 hour
         });
         
-
+        res.setHeader('Authorization', 'Bearer '+ Token)
         res.status(200).send({
             id:user._id,
             username:user.username,
             email:user.email,
-            token:Token,
         })
+    }).catch(_err=> {
+        res.status(404).send({message:'user not found'})
     })
 }
 
