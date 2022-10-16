@@ -23,7 +23,7 @@ app.use(express.urlencoded({extended:true}));
 // );
 
 DB.mongoose
-    .connect(`mongodb://${dbConfig.HOST}:${dbConfig.PORT}/${dbConfig.DB}`,{
+    .connect("mongodb+srv://abdallah-askar:abdallah-asker-pass@cluster0.vm70qd2.mongodb.net/?retryWrites=true&w=majority",{
         useNewUrlParser:true,
         useUnifiedTopology:true
     })
