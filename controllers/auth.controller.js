@@ -40,6 +40,7 @@ exports.login = (req,res)=> {
         
         res.setHeader('Authorization', 'Bearer '+ Token)
         res.status(200).send({
+            status:true,
             id:user._id,
             username:user.username,
             email:user.email,
