@@ -4,6 +4,6 @@ const db= {};
 
 db.mongoose=mongoose;
 db.user= require('./user.model')
-db.questoins= require('./questions.model')
+db.questions= require('./questions.model')
 
 module.exports = db;

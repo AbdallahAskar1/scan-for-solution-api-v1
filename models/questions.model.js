@@ -10,3 +10,4 @@ const question = mongoose.model(
     //created_by:ObjectId,
   })
 );
+module.exports = question;

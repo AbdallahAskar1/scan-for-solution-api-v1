@@ -40,7 +40,7 @@ app.get('/',(req,res)=>{
     res.json({message:'welcome to our scan for solution application'});
 });
 require('./routes/auth.routes')(app);
-
+require('./routes/user.routes')(app);
 
 const PORT = process.env.PORT || 5000;
 
