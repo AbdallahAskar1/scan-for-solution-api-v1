@@ -11,7 +11,7 @@ module.exports = function(app){
     });
 
     app.post("/user/question",
-    verifyToken,
+//     verifyToken,
     controller.create_question
     );
     app.get("/user/question/:id",
