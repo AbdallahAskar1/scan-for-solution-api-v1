@@ -1,6 +1,7 @@
 const verifySignup = require('../middlewares/verifySignup');
 const controller = require('../controllers/auth.controller');
 const { verifyToken } = require('../middlewares/authJwt');
+const { validateEmailPassword } = require('../middlewares');
 
 module.exports = function(app){
     app.use(function(req,res,next){
@@ -13,6 +14,7 @@ module.exports = function(app){
 
     app.post("/auth/signup",
     verifySignup.checkDuplicateUsernameOrEmail,
+    validateEmailPassword,
     controller.signup
     );
 

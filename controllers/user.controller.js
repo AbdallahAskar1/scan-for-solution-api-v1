@@ -13,7 +13,7 @@ exports.create_question=(req,res)=>{
     });
     q.save((err,q)=>{
         if(err){
-            return res.satus(500).send({message:err});
+            return res.satus(500).send({message:err,status:false});
         }
         res.status(201).send({ message: "Question was created successfully!",status:true,id:q._id });
     })

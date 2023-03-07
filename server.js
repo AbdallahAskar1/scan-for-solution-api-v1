@@ -42,7 +42,7 @@ app.get('/',(req,res)=>{
 require('./routes/auth.routes')(app);
 require('./routes/user.routes')(app);
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 6000;
 
 app.listen(PORT,()=> {
     console.log(`server is running on http://localhost:${PORT}`);
