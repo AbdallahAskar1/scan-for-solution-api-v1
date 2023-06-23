@@ -1,6 +1,6 @@
 # scan-for-solution-api-v1
-## Project Structure
-- config
+## Project Structure  @askar
+- config  @askar
     - configure MongoDB database
     - configure Auth Key
 - routes
@@ -9,11 +9,12 @@
 - middlewares
     - verifySignup.js: check duplicate Username or email @amr
     - authJwt.js: verify token @amr
+    - validateEmailPassword.js : vaildate email & password @askar
 - controlllers
     - auth.controller.js:handle signup,login,logout @askar
     - user.controller.js:return public and protected content @gommaa
 - models
-    - user.model.js @abdelrahman
-    - question.model.js @abdelrahman
+    - user.model.js @askar
+    - question.model.js @askar
 
 - server.js: import and initialize necessary modules and routes,listen for the connections @askar
