@@ -1,6 +1,9 @@
 const { verifyToken } = require("../middlewares/authJwt");
+const { extractTextFromUrls } = require("../middlewares/scrapingUrls");
+const { getOrganicData, search } = require("../middlewares/search");
 const { questions } = require("../models");
-const DB = require('../models')
+const DB = require('../models');
+const queryML = require("./QA");
 const question = DB.questions;
 
 exports.create_question=(req,res)=>{
@@ -30,3 +33,42 @@ exports.read_question=(req,res)=>{
         
         
 }
+exports.search_question = async (req, res) => {
+    try {
+      const id = req.params.id;
+      console.log(id);
+  
+      const q = await question.findById(id);
+      if (!q) {
+        return res.status(404).send({ message: "Question not found", status: false });
+      }
+  
+      if (q.search_results.length=="N") {
+        return res.status(200).send({ question : q });
+      } else {
+        const query = q.question_body.split(" ").join("+");
+        const snippet = await getOrganicData(query);
+        console.log(snippet);
+        // const urls = data.map(item => item.links);
+        // const extractedTexts = await extractTextFromUrls(urls);
+       const answer= await queryML({"inputs": {
+              "question": `${query}`,
+              "context": `${[snippet]}`
+            }})
+        // const result = data.map((item, index) => ({
+        //     ...item,
+        //     extractedText: extractedTexts[index]
+        //   }));
+        // q.search_results = await result;
+        console.log(answer)
+        q.answer=answer;
+        await q.save();
+        
+        return res.status(200).send({ question: q });
+      }
+    } catch (err) {
+      console.error(err);
+      return res.status(500).send({ message: "Internal server error" });
+    }
+  };
+  

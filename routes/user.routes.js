@@ -17,4 +17,10 @@ module.exports = function(app){
     app.get("/user/question/:id",
     verifyToken,
     controller.read_question)
+
+    app.get("/user/search/:id",
+    // verifyToken,
+    controller.search_question
+    );
+
 }

@@ -6,7 +6,14 @@ const question = mongoose.model(
   new mongoose.Schema({
     question_body: String,
     choices: Array,
-    answer: String,
+    answer: new mongoose.Schema({
+      score:Number,
+      start:Number,
+      end:Number,
+      answer:String
+
+    }),
+    search_results:Array,
     //created_by:ObjectId,
   })
 );
