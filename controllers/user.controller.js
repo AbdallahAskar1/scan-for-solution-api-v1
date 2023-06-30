@@ -44,7 +44,7 @@ exports.search_question = async (req, res) => {
         return res.status(404).send({ message: "Question not found", status: false });
       }
   
-      if (q.search_results.length>=2) {
+      if (q.scores) {
         return res.status(200).send({ question : q });
       } else {
         const query = q.question_body.split(" ").join("+");
