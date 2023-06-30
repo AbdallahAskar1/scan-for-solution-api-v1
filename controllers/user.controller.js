@@ -12,12 +12,12 @@ exports.create_question=(req,res)=>{
     const q = new question({
         question_body:req.body.question_body,
         choices:req.body.choices,
-        answer:req.body.answer
+        // answer:req.body.answer
 
     });
     q.save((err,q)=>{
         if(err){
-            return res.satus(500).send({message:err,status:false});
+            return res.status(500).send({message:err,status:false});
         }
         res.status(201).send({ message: "Question was created successfully!",status:true,id:q._id });
     })
