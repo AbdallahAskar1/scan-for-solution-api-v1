@@ -6,6 +6,7 @@ const question = mongoose.model(
   new mongoose.Schema({
     question_body: String,
     choices: Array,
+    scores: Array,
     answer: new mongoose.Schema({
       score:Number,
       start:Number,

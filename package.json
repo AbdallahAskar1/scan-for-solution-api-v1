@@ -18,6 +18,7 @@
     "jsonwebtoken": "^8.5.1",
     "mongodb": "^4.10.0",
     "mongoose": "^6.6.5",
+    "python-shell": "^5.0.0",
     "unirest": "^0.6.0"
   },
   "keywords": [],

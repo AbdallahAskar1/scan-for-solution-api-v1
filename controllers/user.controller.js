@@ -1,4 +1,5 @@
 const { verifyToken } = require("../middlewares/authJwt");
+const choiceScore = require("../middlewares/choicesScore");
 const { extractTextFromUrls } = require("../middlewares/scrapingUrls");
 const { getOrganicData, search } = require("../middlewares/search");
 const { questions } = require("../models");
@@ -62,6 +63,13 @@ exports.search_question = async (req, res) => {
         // q.search_results = await result;
         console.log(answer)
         q.answer=answer;
+        q.scores = await Promise.all(q.choices.map(async (choice) => {
+          console.log(choice);
+          console.log(answer.answer);
+          const d = await choiceScore(choice, answer.answer);
+          console.log(d);
+          return d[0];
+        }));
         await q.save();
         
         return res.status(200).send({ question: q });
