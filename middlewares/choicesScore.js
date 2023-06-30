@@ -1,16 +1,9 @@
-const {PythonShell}= require('python-shell')
-
-
-
-async function choiceScore(choice,ans) {
-    
-try {
-    const score= await PythonShell.run('./python/cosine-sim.py',{args:[choice,ans]})
-    return score;
-} catch (error) {
-    console.log(error)
+const stringSimilarity = require('string-similarity');
+ 
+function choiceScore(choice,ans) {
+ 
+    const similarity =  stringSimilarity.compareTwoStrings(choice, ans);
+    return similarity
 }
-}
-// choiceScore("the lazy dog is jumped over by the quick brown fox","he lazy dog is jumped brown fox")
-
+// console.log(choiceScore("JavaScript","JavaScript"))
 module.exports=choiceScore;

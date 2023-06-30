@@ -40,6 +40,7 @@ def cosine_similarity(text1, text2):
 # Example usage
 text1 = "The quick brown fox jumps over the lazy dog"
 text2 = "The lazy dog is jumped over by the quick brown fox"
-similarity = cosine_similarity(sys.argv[1],sys.argv[2])
+# similarity = cosine_similarity(sys.argv[1],sys.argv[2])
+similarity = cosine_similarity(text1,text2)
 print(similarity)
 

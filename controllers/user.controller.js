@@ -68,7 +68,7 @@ exports.search_question = async (req, res) => {
           console.log(answer.answer);
           const d = await choiceScore(choice, answer.answer);
           console.log(d);
-          return d[0];
+          return d;
         }));
         await q.save();
         
