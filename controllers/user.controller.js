@@ -38,8 +38,7 @@ exports.read_question = (req, res) => {
 };
 
         
-        
-}
+       
 exports.search_question = async (req, res) => {
     try {
       const id = req.params.id;
