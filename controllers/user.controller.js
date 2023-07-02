@@ -22,15 +22,21 @@ exports.create_question=(req,res)=>{
         res.status(201).send({ message: "Question was created successfully!",status:true,id:q._id });
     })
 };
-exports.read_question=(req,res)=>{
-        const id = req.params.id;
-        console.log(id);
-        question.findById(id,(err, question)=>{
-            if (err){
-               res.status(404).send({message:"question not found", status:false})
-            }else{
-                res.status(200).send({result:question})
-            }});
+
+exports.read_question = (req, res) => {
+  const id = req.params.id;
+  console.log(id);
+  question.findById(id, (err, foundQuestion) => {
+    if (err) {
+      res.status(500).send({ message: "Error finding question", status: false });
+    } else if (!foundQuestion) {
+      res.status(404).send({ message: "Question not found", status: false });
+    } else {
+      res.status(200).send({ result: foundQuestion });
+    }
+  });
+};
+
         
         
 }
