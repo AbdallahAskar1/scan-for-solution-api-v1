@@ -6,7 +6,7 @@ const User = DB.user;
 verifyToken =(req,res,next)=> {
     // let token = req.headers.authorization
     let token = req.headers.authorization
-    // console.log(token);
+    console.log(token);
     
     if(!token || token == undefined){
         return res.status(403).send({message:"No token provided"})
@@ -15,7 +15,7 @@ verifyToken =(req,res,next)=> {
     token=token.replace('Bearer ', '');
     jwt.verify(token,config.secret,(err,decoded)=> {
         if(err){
-            return res.status(401).send({message:"unauthorized"})
+            return res.status(401).send({message:"unauthorized | please login first and provide a valid token to ensure that you are authorized."})
         }
         req.userId= decoded.id
         next();
