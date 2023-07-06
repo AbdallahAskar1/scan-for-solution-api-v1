@@ -49,10 +49,6 @@ exports.search_question = async (req, res) => {
         return res.status(404).send({ message: "Question not found", status: false });
       }
   
-      if (q.scores.length>2) {
-        console.log(q.scores.length>2)
-        return res.status(200).send({ question : q });
-      } else {
         const query = q.question_body.split(" ").join("+");
         const snippet = await getOrganicData(query);
         console.log(snippet);
@@ -79,7 +75,7 @@ exports.search_question = async (req, res) => {
         await q.save();
         
         return res.status(200).send({ question: q });
-      }
+      
     } catch (err) {
       console.error(err);
       return res.status(500).send({ message: "Internal server error" });
