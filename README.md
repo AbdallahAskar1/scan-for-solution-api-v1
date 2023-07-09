@@ -5,14 +5,16 @@
     - configure Auth Key
 - routes
     - auth.routes.js: POST signup,login,logout @askar
-    - user.routes.js: GET public & protected resources;questions @gomaa
+    - user.routes.js:CRUD and search questions @askar
+    - profile.routes.js: GET public & protected resources;user profile @gommaa
 - middlewares
     - verifySignup.js: check duplicate Username or email @amr
     - authJwt.js: verify token @amr
     - validateEmailPassword.js : vaildate email & password @askar
 - controlllers
     - auth.controller.js:handle signup,login,logout @askar
-    - user.controller.js:return public and protected content @gommaa
+    - user.controller.js:CRUD and search questions @askar
+    - profile.controller.js: GET public & protected resources;user profile @gomaa
 - models
     - user.model.js @askar
     - question.model.js @askar
